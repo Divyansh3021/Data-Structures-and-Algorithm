@@ -29,11 +29,6 @@ for i in range(9):
 iter = 1
 
 temp2d = [[]]
-for i in range(0 * iter,3*iter):
-    print(i)
-    temp2d.append([])
-    for j in range(0*iter, 3*iter):
-        temp2d[i].append(sudoku[i][j])
-    iter += 1
-    print(temp2d)
-    temp2d = [[]]       
+
+for i in range(9):
+        
