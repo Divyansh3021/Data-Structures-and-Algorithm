@@ -1,26 +1,28 @@
 nums = [-1,0,1,2,-1,-4]
 target = 0
 
-res = []
-last_elem = nums[-1]
+nums = sorted(nums)
+index_arr = []
 
-for k in range(len(nums)):
-    first_complement = target - nums[k]
-    print("First Complement is: ",first_complement)
-    temp_arr = []
+print("New array is: ",nums,"\n\n")
+i = 0
+k = len(nums) - 1
 
-    for i in range(k+1,len(nums)):
-        complement = first_complement - nums[i]
-        print("Complement is: ",complement)
-        if complement > last_elem:
-            pass
+for i in range(len(nums)-2):
+    j = i+1
+    print("i: ",i)
+    while  j < k:
+        current_sum = nums[i] + nums[j] + nums[k]
+        # print("Current numbers are:",nums[i]," ",nums[j]," ",nums[k])
+        # print("Current sum: ",current_sum,"\n\n")
+        if current_sum  == target:
+            if ([nums[i],nums[j],nums[k]]) not in index_arr:
+                index_arr.append([nums[i],nums[j],nums[k]])
+            j += 1
+        elif current_sum < target:
+            j += 1
         else:
-            for j in range(i+1, len(nums)):
-                if nums[j] == complement:
-                    print("Complement found")
-                    temp_arr.append(nums[k])
-                    index_arr.append(i+1)
-                    index_arr.append(j+1)
-                    res.append(temp_arr)
+            k -= 1
+    k = len(nums) - 1
 
-print(res)
+print(index_arr)
