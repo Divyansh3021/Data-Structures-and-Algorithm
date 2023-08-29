@@ -5,11 +5,13 @@ from collections import deque
 stack = deque()
 
 for i in s:
-    stack.append(i)
-
-for i in stack:
     if i == "*":
         stack.pop()
-        stack.pop()
+    else:
+        stack.append(i)
 
-print(stack)
+string = ""
+for i in stack:
+    string += i
+
+print(string)
